@@ -1,0 +1,33 @@
+h1 {
+	color: grey;
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+#do, #decide, #delegate, #delete {
+	float:left;
+    position: relative;
+    width: 50%;
+    padding-bottom : 20%;
+    margin: 0 auto;
+}
+
+
+#do {
+    background-color: #FFCC66;
+}
+
+#decide {
+    background-color: #66FF99;
+}
+
+#delegate {
+    background-color: #CC99FF;
+}
+
+#delete {
+    background-color: #99CCFF;
+}
