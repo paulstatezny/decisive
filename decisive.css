@@ -1,3 +1,9 @@
+html, body {
+	height  : 100%;
+	padding : 0;
+	margin  : 0;
+}
+
 h1 {
 	color: grey;
 	text-align: center;
@@ -7,27 +13,38 @@ p {
 	text-align: center;
 }
 
-#do, #decide, #delegate, #delete {
-	float:left;
-    position: relative;
-    width: 50%;
-    padding-bottom : 20%;
-    margin: 0 auto;
+.sidebar {
+	float  : left;
+	width  : 20%;
+	height : 100%;
 }
 
-
-#do {
-    background-color: #FFCC66;
+.grid {
+	float  : left;
+	width  : 80%;
+	height : 100%;
 }
 
-#decide {
-    background-color: #66FF99;
+.grid__quadrant {
+	float    :left;
+	position : relative;
+	width    : 50%;
+	margin   : 0 auto;
+	height   : 50%
 }
 
-#delegate {
-    background-color: #CC99FF;
+.grid__quadrant--do {
+	background-color: #FFCC66;
 }
 
-#delete {
-    background-color: #99CCFF;
+.grid__quadrant--plan {
+	background-color: #66FF99;
+}
+
+.grid__quadrant--delegate {
+	background-color: #CC99FF;
+}
+
+.grid__quadrant--later {
+	background-color: #99CCFF;
 }
