@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Decisive App</title>
+		<link rel="stylesheet" type="text/css" href="./decisive.css">
+	</head>
 
-<head>
-<meta charset="UTF-8">
-<title>decisive</title>
-<link rel="stylesheet" type="text/css" href="decisive.css">
-</head>
+	<body>
+		<nav class="sidebar">
+			Logo
+		</nav>
+		<main class="grid">
+			<section class="grid__quadrant grid__quadrant--do">
+				<p>This is important and urgent</p>
+			</section>
 
-<body>
+			<section class="grid__quadrant grid__quadrant--plan">
+				<p>This is important, but not urgent</p>
+			</section>
 
-<h1>decisive</h1>
+			<section class="grid__quadrant grid__quadrant--delegate">
+				<p>This is not important, but urgent</p>
+			</section>
 
-<div id="do">
-<p>This is important and urgent</p>
-</div>
-
-<div id="decide">
-<p>This is important, but not urgent</p>
-</div>
-
-<div id="delegate">
-<p>This is not important, but urgent</p>
-</div>
-
-<div id="delete">
-<p>This is neither important, nor urgent</p>
-</div>
-
-</body>
-
+			<section class="grid__quadrant grid__quadrant--later">
+				<p>This is neither important, nor urgent</p>
+			</section>
+		</main>
+	</body>
 </html>
