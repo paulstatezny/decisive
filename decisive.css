@@ -1,36 +1,108 @@
 html, body {
-	height  : 100%;
-	padding : 0;
-	margin  : 0;
+	height      : 100%;
+	width       : 100%;
+	padding     : 0;
+	margin      : 0;
+	font-family : arial;
 }
 
-h1 {
-	color: grey;
-	text-align: center;
-}
-
-p {
-	text-align: center;
-}
-
+/**
+ * Main Layout
+ */
 .sidebar {
-	float  : left;
-	width  : 20%;
-	height : 100%;
+	float      : left;
+	width      : 10em;
+	height     : 100%;
+	background : #eee;
 }
+
+.content {
+	height   : 100%;
+	width    : auto;
+	overflow : hidden;
+}
+
+/**
+ * Priority Labels
+ */
+
+.content__top-gutter {
+	height : 2em;
+	width  : 100%;
+}
+
+.content__under-top-gutter {
+	height : 100%;
+	width  : 100%;
+	overflow : hidden;
+}
+
+.top-gutter__corner {
+	float : left;
+	height : 2em;
+	width  : 2em;
+}
+
+.top-gutter__main {
+	height   : 2em;
+	width    : auto;
+	overflow : hidden;
+}
+
+.corner-gutter {
+	float  : left;
+	height : 2em;
+	width  : 2em;
+}
+
+.left-gutter {
+	float    : left;
+	height   : 100%;
+	width    : 2em;
+	position : relative;
+}
+
+.top-gutter__header {
+	float       : left;
+	width       : 50%;
+	height      : 2em;
+	text-align  : center;
+	padding-top : 0.4em;
+}
+
+.priority-label {
+	color : #bbb;
+}
+
+.left-gutter__heading {
+	height : 50%;
+	width : 100%;
+	position: relative;
+}
+
+.left-gutter__heading__text {
+	position    : absolute;
+	top         : 50%;
+	left        : 50%;
+	transform   : translateX(-50%) translateY(-50%) rotate(-90deg);
+	white-space : nowrap;
+}
+
+/**
+ * Grid
+ */
 
 .grid {
-	float  : left;
-	width  : 80%;
-	height : 100%;
+	width    : auto;
+	height   : 100%;
+	overflow : hidden;
 }
 
 .grid__quadrant {
-	float    :left;
-	position : relative;
-	width    : 50%;
+	float    : left;
 	margin   : 0 auto;
-	height   : 50%
+	height   : 50%;
+	width    : 50%;
 }
 
 .grid__quadrant--do {

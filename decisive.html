@@ -11,22 +11,41 @@
 		<nav class="sidebar">
 			Logo
 		</nav>
-		<main class="grid">
-			<section class="grid__quadrant grid__quadrant--do">
-				<p>This is important and urgent</p>
-			</section>
+		<main class="content">
+			<div class="content__top-gutter">
+				<div class="top-gutter__corner"></div>
+				<div class="top-gutter__main">
+					<div class="top-gutter__header priority-label">Urgent</div>
+					<div class="top-gutter__header priority-label">Not Urgent</div>
+				</div>
+			</div>
+			<div class="content__under-top-gutter">
+				<div class="left-gutter">
+					<div class="left-gutter__heading">
+						<span class="left-gutter__heading__text priority-label">Important</span>
+					</div>
+					<div class="left-gutter__heading">
+						<span class="left-gutter__heading__text priority-label">Not Important</span>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="grid__quadrant grid__quadrant--do">
+						<p>This is important and urgent</p>
+					</div>
 
-			<section class="grid__quadrant grid__quadrant--plan">
-				<p>This is important, but not urgent</p>
-			</section>
+					<div class="grid__quadrant grid__quadrant--plan">
+						<p>This is important, but not urgent</p>
+					</div>
 
-			<section class="grid__quadrant grid__quadrant--delegate">
-				<p>This is not important, but urgent</p>
-			</section>
+					<div class="grid__quadrant grid__quadrant--delegate">
+						<p>This is not important, but urgent</p>
+					</div>
 
-			<section class="grid__quadrant grid__quadrant--later">
-				<p>This is neither important, nor urgent</p>
-			</section>
+					<div class="grid__quadrant grid__quadrant--later">
+						<p>This is neither important, nor urgent</p>
+					</div>
+				</div>
+			</div>
 		</main>
 	</body>
 </html>
