@@ -1,0 +1,173 @@
+html, body {
+	height      : 100%;
+	width       : 100%;
+	padding     : 0;
+	margin      : 0;
+	font-family : arial;
+}
+
+/**
+ * Main Layout
+ */
+.sidebar {
+	float      : left;
+	width      : 10em;
+	height     : 100%;
+	background : #eee;
+}
+
+.logo {
+	text-align : center;
+}
+
+.sidebar h3 {
+	padding-left: 10px;
+}
+
+.sidebar ul {
+	padding: 0;
+}
+
+.sidebar li {
+	list-style-type : none;
+	text-align	    : center;
+	width           : 10em; 
+	padding-top     : 1em;
+	padding-bottom  : 1em;
+}
+
+.sidebar li:nth-child(odd) {
+	background-color : #DEDEDE;
+}
+
+.sidebar a {
+	text-decoration : none;
+	color           : black;
+}
+
+.content {
+	height   : 100%;
+	width    : auto;
+	overflow : hidden;
+}
+
+/**
+ * Priority Labels
+ */
+
+.content__top-gutter {
+	height : 2em;
+	width  : 100%;
+}
+
+.content__under-top-gutter {
+	height : 100%;
+	width  : 100%;
+	overflow : hidden;
+}
+
+.top-gutter__corner {
+	float : left;
+	height : 2em;
+	width  : 2em;
+}
+
+.top-gutter__main {
+	height   : 2em;
+	width    : auto;
+	overflow : hidden;
+}
+
+.corner-gutter {
+	float  : left;
+	height : 2em;
+	width  : 2em;
+}
+
+.left-gutter {
+	float    : left;
+	height   : 100%;
+	width    : 2em;
+	position : relative;
+}
+
+.top-gutter__header {
+	float       : left;
+	width       : 50%;
+	height      : 2em;
+	text-align  : center;
+	padding-top : 0.4em;
+}
+
+.priority-label {
+	color : #bbb;
+}
+
+.left-gutter__heading {
+	height   : 50%;
+	width    : 100%;
+	position : relative;
+}
+
+.left-gutter__heading__text {
+	position    : absolute;
+	top         : 50%;
+	left        : 50%;
+	transform   : translateX(-50%) translateY(-50%) rotate(-90deg);
+	white-space : nowrap;
+}
+
+/**
+ * Grid
+ */
+
+.grid {
+	width    : auto;
+	height   : 100%;
+	overflow : hidden;
+}
+
+.grid__quadrant {
+	float    : left;
+	margin   : 0 auto;
+	height   : 50%;
+	width    : 50%;
+}
+
+.grid__quadrant h1, p {
+	padding-left: 10px;
+}
+
+.grid__quadrant--do {
+	background-color: #FFCC66;
+}
+
+.grid__quadrant--plan {
+	background-color: #66FF99;
+}
+
+.grid__quadrant--delegate {
+	background-color: #CC99FF;
+}
+
+.grid__quadrant--later {
+	background-color: #99CCFF;
+}
+
+#checklist ul {
+	padding-left: 10px;
+}
+
+#checklist li {
+	list-style-type: none;
+}
+
+#checklist img {
+	float: right;
+	padding-right: 10px;
+}
+
+input:checked + label {
+	color           : gray;
+	text-decoration : line-through;
+}
