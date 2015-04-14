@@ -160,6 +160,7 @@ html, body {
 
 .checklist li {
 	list-style-type: none;
+	margin-bottom : 0.2em;
 }
 
 .checklist img {
@@ -167,7 +168,7 @@ html, body {
 	padding-right: 10px;
 }
 
-input:checked + label {
+.checked {
 	color           : gray;
 	text-decoration : line-through;
 }
