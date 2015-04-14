@@ -31,7 +31,7 @@ html, body {
 .sidebar li {
 	list-style-type : none;
 	text-align	    : center;
-	width           : 10em; 
+	width           : 10em;
 	padding-top     : 1em;
 	padding-bottom  : 1em;
 }
@@ -154,15 +154,15 @@ html, body {
 	background-color: #99CCFF;
 }
 
-#checklist ul {
+.checklist {
 	padding-left: 10px;
 }
 
-#checklist li {
+.checklist li {
 	list-style-type: none;
 }
 
-#checklist img {
+.checklist img {
 	float: right;
 	padding-right: 10px;
 }
