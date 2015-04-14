@@ -16,6 +16,35 @@ html, body {
 	background : #eee;
 }
 
+.logo {
+	text-align : center;
+}
+
+.sidebar h3 {
+	padding-left: 10px;
+}
+
+.sidebar ul {
+	padding: 0;
+}
+
+.sidebar li {
+	list-style-type : none;
+	text-align	    : center;
+	width           : 10em; 
+	padding-top     : 1em;
+	padding-bottom  : 1em;
+}
+
+.sidebar li:nth-child(odd) {
+	background-color : #DEDEDE;
+}
+
+.sidebar a {
+	text-decoration : none;
+	color           : black;
+}
+
 .content {
 	height   : 100%;
 	width    : auto;
@@ -75,9 +104,9 @@ html, body {
 }
 
 .left-gutter__heading {
-	height : 50%;
-	width : 100%;
-	position: relative;
+	height   : 50%;
+	width    : 100%;
+	position : relative;
 }
 
 .left-gutter__heading__text {
@@ -105,6 +134,10 @@ html, body {
 	width    : 50%;
 }
 
+.grid__quadrant h1, p {
+	padding-left: 10px;
+}
+
 .grid__quadrant--do {
 	background-color: #FFCC66;
 }
@@ -119,4 +152,22 @@ html, body {
 
 .grid__quadrant--later {
 	background-color: #99CCFF;
+}
+
+#checklist ul {
+	padding-left: 10px;
+}
+
+#checklist li {
+	list-style-type: none;
+}
+
+#checklist img {
+	float: right;
+	padding-right: 10px;
+}
+
+input:checked + label {
+	color           : gray;
+	text-decoration : line-through;
 }
