@@ -76,7 +76,7 @@ html, body {
  */
 
 .content__top-gutter {
-	height : 2em;
+	height : 4em;
 	width  : 100%;
 }
 
@@ -88,20 +88,14 @@ html, body {
 
 .top-gutter__corner {
 	float : left;
-	height : 2em;
-	width  : 2em;
+	height : 4em;
+	width  : 4em;
 }
 
 .top-gutter__main {
-	height   : 2em;
+	height   : 4em;
 	width    : auto;
 	overflow : hidden;
-}
-
-.corner-gutter {
-	float  : left;
-	height : 2em;
-	width  : 2em;
 }
 
 .top-gutter__header, .left-gutter__header {
@@ -112,16 +106,16 @@ html, body {
 .left-gutter {
 	float    : left;
 	height   : 100%;
-	width    : 2em;
+	width    : 4em;
 	position : relative;
 }
 
 .top-gutter__header {
-	float            : left;
-	width            : 50%;
-	height           : 2em;
-	text-align       : center;
-	padding-top      : 0.4em;
+	float       : left;
+	width       : 50%;
+	height      : 1.6em;
+	text-align  : center;
+	padding-top : 0.4em;
 }
 
 .top-gutter__header--blue {
@@ -130,6 +124,7 @@ html, body {
 
 .priority-label {
 	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size  : 2em;
 }
 
 .left-gutter__header {
@@ -142,8 +137,15 @@ html, body {
 	position    : absolute;
 	top         : 50%;
 	left        : 50%;
-	transform   : translateX(-50%) translateY(-50%) rotate(-90deg);
 	white-space : nowrap;
+}
+
+.left-gutter__header__text--bottom {
+	transform : translateX(-50%) translateY(-120%) rotate(-90deg);
+}
+
+.left-gutter__header__text--top {
+	transform : translateX(-50%) translateY(-50%) rotate(-90deg);
 }
 
 /**
@@ -163,8 +165,8 @@ html, body {
 	width    : 50%;
 }
 
-.grid__quadrant h1, p {
-	padding-left: 10px;
+.grid__quadrant h1, .grid__quadrant p, .grid__quadrant li {
+	padding-left: 1em;
 }
 
 .grid__quadrant h1 {
@@ -187,8 +189,12 @@ html, body {
 	background-color: #EEE;
 }
 
+.quadtrant__hint {
+	font-size: 1.1em;
+}
+
 .checklist {
-	padding-left: 10px;
+	padding-left: 0;
 }
 
 .checklist li {
@@ -198,7 +204,7 @@ html, body {
 
 .checklist img {
 	float: right;
-	padding-right: 10px;
+	padding-right: 1em;
 }
 
 .checked {
