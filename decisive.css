@@ -14,14 +14,28 @@ html, body {
  */
 .sidebar {
 	float      : left;
-	width      : 10em;
+	width      : 12em;
 	height     : 100%;
-	background : #eee;
+	background : #f9f9f9;
 }
 
 .logo {
-	font-family: 'Alegreya Sans SC', sans-serif;
-	text-align : center;
+	font-size   : 2.25em;
+	font-family : 'Alegreya Sans SC', sans-serif;
+	text-align  : center;
+	margin-top  : 0.3em;
+	position: relative;
+}
+
+.logo__block {
+	width  : 0.335em;
+	height : 0.335em;
+	display: inline-block;
+}
+
+.logo__block--top-left, .logo__block--top-right {
+	position : absolute;
+	top      : 20%;
 }
 
 .sidebar h3 {
@@ -37,7 +51,7 @@ html, body {
 .sidebar li {
 	list-style-type : none;
 	text-align	    : center;
-	width           : 10em;
+	width           : 100%;
 	padding-top     : 1em;
 	padding-bottom  : 1em;
 }
@@ -90,6 +104,11 @@ html, body {
 	width  : 2em;
 }
 
+.top-gutter__header, .left-gutter__header {
+	color            : #888;
+	background-color : #eee;
+}
+
 .left-gutter {
 	float    : left;
 	height   : 100%;
@@ -98,25 +117,28 @@ html, body {
 }
 
 .top-gutter__header {
-	float       : left;
-	width       : 50%;
-	height      : 2em;
-	text-align  : center;
-	padding-top : 0.4em;
+	float            : left;
+	width            : 50%;
+	height           : 2em;
+	text-align       : center;
+	padding-top      : 0.4em;
+}
+
+.top-gutter__header--blue {
+	color : #666;
 }
 
 .priority-label {
 	font-family: 'Alegreya Sans SC', sans-serif;
-	color : #bbb;
 }
 
-.left-gutter__heading {
+.left-gutter__header {
 	height   : 50%;
 	width    : 100%;
 	position : relative;
 }
 
-.left-gutter__heading__text {
+.left-gutter__header__text {
 	position    : absolute;
 	top         : 50%;
 	left        : 50%;
@@ -149,20 +171,20 @@ html, body {
 	font-family: 'Alegreya Sans SC', sans-serif;
 }
 
-.grid__quadrant--do {
-	background-color: #FFCC66;
+.grid__quadrant--do, .logo__block--top-left {
+	background-color: #9ACEEB;
 }
 
-.grid__quadrant--plan {
-	background-color: #66FF99;
+.grid__quadrant--plan, .left-gutter__header--blue, .logo__block--top-right {
+	background-color: #C1E7EC;
 }
 
-.grid__quadrant--delegate {
-	background-color: #CC99FF;
+.grid__quadrant--delegate, .top-gutter__header--blue, .logo__block--bottom-left {
+	background-color: #C1DAF8;
 }
 
-.grid__quadrant--later {
-	background-color: #99CCFF;
+.grid__quadrant--later, .logo__block--bottom-right {
+	background-color: #EEE;
 }
 
 .checklist {
