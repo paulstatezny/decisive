@@ -1,9 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Vollkorn);
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans+SC);
+
 html, body {
 	height      : 100%;
 	width       : 100%;
 	padding     : 0;
 	margin      : 0;
-	font-family : arial;
+	font-family : 'Vollkorn', serif;
 }
 
 /**
@@ -17,14 +20,17 @@ html, body {
 }
 
 .logo {
+	font-family: 'Alegreya Sans SC', sans-serif;
 	text-align : center;
 }
 
 .sidebar h3 {
 	padding-left: 10px;
+	font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 .sidebar ul {
+	font-family: 'Alegreya Sans SC', sans-serif;
 	padding: 0;
 }
 
@@ -100,6 +106,7 @@ html, body {
 }
 
 .priority-label {
+	font-family: 'Alegreya Sans SC', sans-serif;
 	color : #bbb;
 }
 
@@ -136,6 +143,10 @@ html, body {
 
 .grid__quadrant h1, p {
 	padding-left: 10px;
+}
+
+.grid__quadrant h1 {
+	font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 .grid__quadrant--do {
