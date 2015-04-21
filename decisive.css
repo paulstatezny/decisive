@@ -211,3 +211,18 @@ html, body {
 	color           : gray;
 	text-decoration : line-through;
 }
+
+.add-new {
+    opacity: 0.6;
+    padding-left: 1em;
+}
+
+.add-new input {
+	border-style: dashed;
+	border-color: #D8D8D8;
+}
+
+::-webkit-input-placeholder {
+ font-style: italic;
+ color: #d0cdfa;
+ }
