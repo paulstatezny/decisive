@@ -2,6 +2,8 @@
 
 var React = require('react');
 
+require('./css/app');
+
 module.exports = React.createClass({
     displayName : 'DecisiveApplication',
 
