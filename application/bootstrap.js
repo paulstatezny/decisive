@@ -4,4 +4,7 @@
 var React       = require('react');
 var Application = require('./application');
 
-React.createElement(Application, window.document.body);
+React.render(
+    React.createElement(Application),
+    window.document.body
+);
