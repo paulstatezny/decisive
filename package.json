@@ -1,0 +1,15 @@
+{
+  "name": "decisive",
+  "version": "0.1.0",
+  "description": "The elegant, free Eisenhower Matrix app",
+  "author": "Paul Statezny",
+  "bugs": {
+    "url": "https://github.com/paulstatezny/decisive/issues"
+  },
+  "homepage": "https://github.com/paulstatezny/decisive",
+  "dependencies": {
+    "react": "^0.13.2",
+    "webpack": "^1.8.10",
+    "webpack-dev-server": "^1.8.2"
+  }
+}
