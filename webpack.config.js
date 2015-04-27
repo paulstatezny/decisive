@@ -67,6 +67,10 @@ module.exports = {
             {
                 test    : /\.(gif|jpe?g|png|svg)$/i,
                 loaders : ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']
+            },
+            {
+                test    : /\.css$/,
+                loaders : ['style', 'css']
             }
         ]
     },
