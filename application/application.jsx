@@ -10,7 +10,7 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div>
+            <div className="container">
                 <nav className="sidebar">
                     <h1 className="logo">
                         <div className="logo__block logo__block--top-left"></div>
@@ -52,10 +52,10 @@ module.exports = React.createClass({
                             <div className="grid__quadrant grid__quadrant--do">
                                 <p className="quadtrant__hint">Do these things now.</p>
                                 <ul className="checklist">
-                                    <li><label className="checked"><input type="checkbox" /> Chill out</label><img src="images/delete-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Max out</label><img src="images/delete-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Relax all cool</label><img src="images/delete-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Shoot some b-ball out by the school</label><img src="images/delete-icon.png" /></li>
+                                    <li><label className="checked"><input type="checkbox" /> Chill out</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Max out</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Relax all cool</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Shoot some b-ball out by the school</label><span className="checklist__item--close-button">X</span></li>
                                     <li className="add-new">
                                         <input type="checkbox" />
                                         <input id="new" type="text" placeholder="Click to add item..." />
@@ -66,8 +66,8 @@ module.exports = React.createClass({
                             <div className="grid__quadrant grid__quadrant--plan">
                                 <p className="quadtrant__hint">Plan a time to do these later.</p>
                                 <ul className="checklist">
-                                    <li><label><input type="checkbox" /> World Domination</label><img src="images/delete-icon.png" /><img src="images/add-to-calendar-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Escape from lab</label><img src="images/delete-icon.png" /><img src="images/add-to-calendar-icon.png" /></li>
+                                    <li><label><input type="checkbox" /> World Domination</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Escape from lab</label><span className="checklist__item--close-button">X</span></li>
                                     <li className="add-new">
                                         <input type="checkbox" />
                                         <input id="new" type="text" placeholder="Click to add item..."/>
@@ -78,8 +78,8 @@ module.exports = React.createClass({
                             <div className="grid__quadrant grid__quadrant--delegate">
                                 <p className="quadtrant__hint">Is someone else available to do these?</p>
                                 <ul className="checklist">
-                                    <li><label><input type="checkbox" /> Clean bathroom</label><img src="images/delete-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Do dishes</label><img src="images/delete-icon.png" /></li>
+                                    <li><label><input type="checkbox" /> Clean bathroom</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Do dishes</label><span className="checklist__item--close-button">X</span></li>
                                     <li className="add-new">
                                         <input type="checkbox" />
                                         <input id="new" type="text" placeholder="Click to add item..."/>
@@ -90,8 +90,8 @@ module.exports = React.createClass({
                             <div className="grid__quadrant grid__quadrant--later">
                                 <p className="quadtrant__hint">Save these items for your free time.</p>
                                 <ul className="checklist">
-                                    <li><label><input type="checkbox" /> Chill more</label><img src="images/delete-icon.png" /></li>
-                                    <li><label><input type="checkbox" /> Relax even cooler</label><img src="images/delete-icon.png" /></li>
+                                    <li><label><input type="checkbox" /> Chill more</label><span className="checklist__item--close-button">X</span></li>
+                                    <li><label><input type="checkbox" /> Relax even cooler</label><span className="checklist__item--close-button">X</span></li>
                                     <li className="add-new">
                                         <input type="checkbox" />
                                         <input id="new" type="text" placeholder="Click to add item..." />
