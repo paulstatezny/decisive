@@ -1,6 +1,12 @@
 'use strict';
 
 var Fluxxor = require('fluxxor');
+var store   = require('store');
+var _       = require('underscore');
+
+var saveToLocalStorage = function(grids) {
+    store.set('grids', grids);
+};
 
 module.exports = Fluxxor.createStore({
     initialize : function()
@@ -8,7 +14,8 @@ module.exports = Fluxxor.createStore({
         this.grids = [];
 
         this.bindActions(
-            'ADD_GRID', 'onAddGrid'
+            'ADD_GRID', 'onAddGrid',
+            'ADD_TASK', 'onAddTask'
         );
     },
 
@@ -16,7 +23,31 @@ module.exports = Fluxxor.createStore({
     {
         this.grids.push({
             name  : name,
-            items : []
+            tasks : []
         });
+
+        saveToLocalStorage(this.grids);
+
+        this.emit('change');
+    },
+
+    onAddTask : function(task)
+    {
+        var grid = _.findWhere(this.grids, {name : task.grid});
+
+        grid.tasks.push({
+            quadrant  : task.quadrant,
+            task      : task.task,
+            completed : false
+        });
+
+        saveToLocalStorage(this.grids);
+
+        this.emit('change');
+    },
+
+    saveToLocalStorage : function()
+    {
+        store.set('grids', this.grids);
     }
 });
