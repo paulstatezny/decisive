@@ -17,10 +17,10 @@ module.exports = React.createClass({
         return (
             <li className={classes}>
                 <label>
-                    <input type="checkbox" checked={this.props.completed} />
+                    <input type='checkbox' checked={this.props.completed} />
                     {this.props.task}
                 </label>
-                <span className="checklist__item__close-button">X</span>
+                <span className='checklist__item__close-button'>X</span>
             </li>
         );
     }

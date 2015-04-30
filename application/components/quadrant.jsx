@@ -25,12 +25,12 @@ module.exports = React.createClass({
     {
         return (
             <div className={'grid__quadrant ' + this.props.className}>
-                <p className="quadtrant__hint">{this.props.hint}</p>
-                <ul className="checklist">
+                <p className='quadtrant__hint'>{this.props.hint}</p>
+                <ul className='checklist'>
                     {this.renderItems()}
-                    <li className="add-new">
-                        <input type="checkbox" />
-                        <input id="new" type="text" placeholder="Click to add item..." />
+                    <li className='add-new'>
+                        <input type='checkbox' checked={false} />
+                        <input id='new' type='text' placeholder='Click to add item...' />
                     </li>
                 </ul>
             </div>
