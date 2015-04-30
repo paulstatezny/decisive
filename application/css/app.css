@@ -202,12 +202,12 @@ html, body, .container {
     margin-bottom : 0.2em;
 }
 
-.checklist__item--close-button {
+.checklist__item__close-button {
     float: right;
     padding-right: 1em;
 }
 
-.checked {
+.checklist__item--checked {
     color           : gray;
     text-decoration : line-through;
 }
