@@ -1,32 +1,10 @@
 'use strict';
 
-var React    = require('react');
-var Quadrant = require('./components/quadrant');
+var React   = require('react');
+var Sidebar = require('./components/sidebar');
+var Grid    = require('./components/grid');
 
 require('./css/app');
-
-var ITEMS = [
-    {
-        task      : 'Create React app version of static HTML',
-        completed : true
-    },
-    {
-        task      : 'Wire up components',
-        completed : false
-    },
-    {
-        task      : 'Implement design feedback',
-        completed : false
-    },
-    {
-        task      : 'Polish design',
-        completed : false
-    },
-    {
-        task      : 'Implement single-column layout',
-        completed : false
-    }
-];
 
 module.exports = React.createClass({
     displayName : 'DecisiveApplication',
@@ -35,26 +13,7 @@ module.exports = React.createClass({
     {
         return (
             <div className="container">
-                <nav className="sidebar">
-                    <h1 className="logo">
-                        <div className="logo__block logo__block--top-left"></div>
-                        <div className="logo__block logo__block--bottom-left"></div>
-                        <span>Decisive</span>
-                        <div className="logo__block logo__block--top-right"></div>
-                        <div className="logo__block logo__block--bottom-right"></div>
-                    </h1>
-
-                    <div>
-                        <h3>Grids</h3>
-                        <ul>
-                            <li><a href="">Work</a></li>
-                            <li><a href="">Outside Work</a></li>
-                            <li><a href="">Weekends</a></li>
-                            <li><a href="">New Grid</a></li>
-                        </ul>
-                    </div>
-
-                </nav>
+                <Sidebar />
                 <main className="content">
                     <div className="content__top-gutter">
                         <div className="top-gutter__corner"></div>
@@ -72,28 +31,7 @@ module.exports = React.createClass({
                                 <span className="left-gutter__header__text left-gutter__header__text--bottom priority-label">Not Important</span>
                             </div>
                         </div>
-                        <div className="grid">
-                            <Quadrant
-                                className = 'grid__quadrant--do'
-                                hint      = 'Do these things now.'
-                                items     = {ITEMS}
-                            />
-                            <Quadrant
-                                className = 'grid__quadrant--plan'
-                                hint      = 'Plan a time to do these later.'
-                                items     = {ITEMS}
-                            />
-                            <Quadrant
-                                className = 'grid__quadrant--delegate'
-                                hint      = 'Is someone else available to do these?'
-                                items     = {ITEMS}
-                            />
-                            <Quadrant
-                                className = 'grid__quadrant--later'
-                                hint      = 'Save these items for your free time.'
-                                items     = {ITEMS}
-                            />
-                        </div>
+                        <Grid />
                     </div>
                 </main>
             </div>
