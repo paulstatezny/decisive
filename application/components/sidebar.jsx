@@ -1,16 +1,27 @@
+/* global prompt */
 'use strict';
 
-var React = require('react');
-var PT    = React.PropTypes;
-var Logo  = require('./logo');
+var React     = require('react');
+var PT        = React.PropTypes;
+var Logo      = require('./logo');
+var FluxMixin = require('fluxxor').FluxMixin(React);
 
 module.exports = React.createClass({
     displayName : 'Sidebar',
+
+    mixins : [FluxMixin],
 
     propTypes : {
         grids : PT.arrayOf(
             PT.shape({name : PT.string})
         ).isRequired
+    },
+
+    addGrid : function()
+    {
+        var gridName = prompt('Enter the name of the grid');
+
+        this.getFlux().actions.addGrid(gridName);
     },
 
     renderGrids : function()
@@ -33,6 +44,7 @@ module.exports = React.createClass({
                     <h3>Grids</h3>
                     <ul>
                         {this.renderGrids()}
+                        <li onClick={this.addGrid}>Add Grid</li>
                     </ul>
                 </div>
             </nav>
