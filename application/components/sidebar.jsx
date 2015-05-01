@@ -2,6 +2,7 @@
 
 var React = require('react');
 var PT    = React.PropTypes;
+var Logo  = require('./logo');
 
 module.exports = React.createClass({
     displayName : 'Sidebar',
@@ -27,13 +28,7 @@ module.exports = React.createClass({
     {
         return (
             <nav className='sidebar'>
-                <h1 className='logo'>
-                    <div className='logo__block logo__block--top-left'></div>
-                    <div className='logo__block logo__block--bottom-left'></div>
-                    <span>Decisive</span>
-                    <div className='logo__block logo__block--top-right'></div>
-                    <div className='logo__block logo__block--bottom-right'></div>
-                </h1>
+                <Logo />
                 <div>
                     <h3>Grids</h3>
                     <ul>
