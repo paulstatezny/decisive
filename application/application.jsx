@@ -4,16 +4,31 @@ var React   = require('react');
 var Sidebar = require('./components/sidebar');
 var Grid    = require('./components/grid');
 
+var FluxMixin       = require('fluxxor').FluxMixin(React);
+var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+
 require('./css/app');
 
 module.exports = React.createClass({
     displayName : 'DecisiveApplication',
 
+    mixins : [
+        FluxMixin,
+        new StoreWatchMixin('grid')
+    ],
+
+    getStateFromFlux : function()
+    {
+        return {
+            grids : this.getFlux().store('grid').getAll()
+        };
+    },
+
     render : function()
     {
         return (
             <div className='container'>
-                <Sidebar />
+                <Sidebar grids={this.state.grids} />
                 <main className='content'>
                     <div className='content__top-gutter'>
                         <div className='top-gutter__corner'></div>

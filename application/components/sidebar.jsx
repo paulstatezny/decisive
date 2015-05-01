@@ -1,9 +1,27 @@
 'use strict';
 
 var React = require('react');
+var PT    = React.PropTypes;
 
 module.exports = React.createClass({
     displayName : 'Sidebar',
+
+    propTypes : {
+        grids : PT.arrayOf(
+            PT.shape({name : PT.string})
+        ).isRequired
+    },
+
+    renderGrids : function()
+    {
+        return this.props.grids.map(function (grid) {
+            return (
+                <li>
+                    <a>{grid.name}</a>
+                </li>
+            );
+        });
+    },
 
     render : function()
     {
@@ -19,10 +37,7 @@ module.exports = React.createClass({
                 <div>
                     <h3>Grids</h3>
                     <ul>
-                        <li><a>Work</a></li>
-                        <li><a>Outside Work</a></li>
-                        <li><a>Weekends</a></li>
-                        <li><a>New Grid</a></li>
+                        {this.renderGrids()}
                     </ul>
                 </div>
             </nav>

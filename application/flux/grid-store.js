@@ -49,5 +49,10 @@ module.exports = Fluxxor.createStore({
     saveToLocalStorage : function()
     {
         store.set('grids', this.grids);
+    },
+
+    getAll : function()
+    {
+        return this.grids;
     }
 });
