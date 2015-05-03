@@ -1,6 +1,7 @@
 /* global prompt */
 'use strict';
 
+var _         = require('underscore');
 var React     = require('react');
 var PT        = React.PropTypes;
 var Logo      = require('./logo');
@@ -24,11 +25,16 @@ module.exports = React.createClass({
         this.getFlux().actions.addGrid(gridName);
     },
 
+    selectGrid : function(grid)
+    {
+        // Wire routing before this
+    },
+
     renderGrids : function()
     {
         return this.props.grids.map(function (grid) {
             return (
-                <li>
+                <li onClick={_(this.selectGrid).partial(grid)}>
                     <a>{grid.name}</a>
                 </li>
             );

@@ -29,6 +29,15 @@ var ITEMS = [
 module.exports = React.createClass({
     displayName : 'Grid',
 
+    propTypes : {
+        items : React.PropTypes.shape({
+            do       : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+            plan     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+            delegate : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+            delay    : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+        }).isRequired
+    },
+
     render : function()
     {
         return (
@@ -36,22 +45,22 @@ module.exports = React.createClass({
                 <Quadrant
                     className = 'grid__quadrant--do'
                     hint      = 'Do these things now.'
-                    items     = {ITEMS}
+                    items     = {this.props.items.do}
                 />
                 <Quadrant
                     className = 'grid__quadrant--plan'
                     hint      = 'Plan a time to do these later.'
-                    items     = {ITEMS}
+                    items     = {this.props.items.plan}
                 />
                 <Quadrant
                     className = 'grid__quadrant--delegate'
                     hint      = 'Is someone else available to do these?'
-                    items     = {ITEMS}
+                    items     = {this.props.items.delegate}
                 />
                 <Quadrant
                     className = 'grid__quadrant--later'
                     hint      = 'Save these items for your free time.'
-                    items     = {ITEMS}
+                    items     = {this.props.items.delay}
                 />
             </div>
         );

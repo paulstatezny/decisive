@@ -23,7 +23,12 @@ module.exports = Fluxxor.createStore({
     {
         return {
             name  : 'Things to Do',
-            tasks : []
+            tasks : {
+                do       : [],
+                plan     : [],
+                delegate : [],
+                delay    : []
+            }
         };
     },
 
@@ -43,8 +48,7 @@ module.exports = Fluxxor.createStore({
     {
         var grid = _.findWhere(this.grids, {name : task.grid});
 
-        grid.tasks.push({
-            quadrant  : task.quadrant,
+        grid.tasks[task.quadrant].push({
             task      : task.task,
             completed : false
         });
