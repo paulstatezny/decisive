@@ -19,6 +19,7 @@
     "jsxhint-loader": "^0.2.0",
     "react": "^0.13.2",
     "react-hot-loader": "^1.2.5",
+    "react-router": "^0.13.3",
     "request": "^2.55.0",
     "store": "^1.3.17",
     "style-loader": "^0.12.0",
