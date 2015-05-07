@@ -6,8 +6,9 @@ module.exports = React.createClass({
     displayName : 'ListItem',
 
     propTypes : {
-        task      : React.PropTypes.string.isRequired,
-        completed : React.PropTypes.bool.isRequired
+        task       : React.PropTypes.string.isRequired,
+        completed  : React.PropTypes.bool.isRequired,
+        removeItem : React.PropTypes.func.isRequired
     },
 
     render : function()
@@ -20,7 +21,7 @@ module.exports = React.createClass({
                     <input type='checkbox' checked={this.props.completed} />
                     {this.props.task}
                 </label>
-                <span className='checklist__item__close-button'>X</span>
+                <span className='checklist__item__close-button' onClick={this.props.removeItem}>X</span>
             </li>
         );
     }
