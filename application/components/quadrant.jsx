@@ -9,12 +9,12 @@ module.exports = React.createClass({
     propTypes : {
         className : React.PropTypes.string.isRequired,
         hint      : React.PropTypes.string.isRequired,
-        items     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+        tasks     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
     },
 
     renderItems : function()
     {
-        return this.props.items.map(function (item) {
+        return this.props.tasks.map(function (item) {
             return (
                 <ListItem task={item.task} completed={item.completed} />
             );

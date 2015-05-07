@@ -20,7 +20,8 @@ module.exports = React.createClass({
     getStateFromFlux : function()
     {
         return {
-            grids : this.getFlux().store('grid').getAll()
+            grids             : this.getFlux().store('grid').getAll(),
+            selectedGridTasks : this.getFlux().store('grid').getTasksForSelectedGrid()
         };
     },
 
@@ -46,7 +47,7 @@ module.exports = React.createClass({
                                 <span className='left-gutter__header__text left-gutter__header__text--bottom priority-label'>Not Important</span>
                             </div>
                         </div>
-                        <Grid />
+                        <Grid tasks={this.state.selectedGridTasks} />
                     </div>
                 </main>
             </div>

@@ -11,11 +11,13 @@ var saveToLocalStorage = function(grids) {
 module.exports = Fluxxor.createStore({
     initialize : function()
     {
-        this.grids = [this.getInitialGrid()];
+        this.grids        = [this.getInitialGrid()];
+        this.selectedGrid = 0;
 
         this.bindActions(
             'ADD_GRID', 'onAddGrid',
-            'ADD_TASK', 'onAddTask'
+            'ADD_TASK', 'onAddTask',
+            'SELECT_GRID', 'onSelectGrid'
         );
     },
 
@@ -36,7 +38,12 @@ module.exports = Fluxxor.createStore({
     {
         this.grids.push({
             name  : name,
-            tasks : []
+            tasks : {
+                do       : [],
+                plan     : [],
+                delegate : [],
+                delay    : []
+            }
         });
 
         saveToLocalStorage(this.grids);
@@ -58,6 +65,13 @@ module.exports = Fluxxor.createStore({
         this.emit('change');
     },
 
+    onSelectGrid : function(index)
+    {
+        this.selectedGrid = index;
+
+        this.emit('change');
+    },
+
     saveToLocalStorage : function()
     {
         store.set('grids', this.grids);
@@ -66,5 +80,15 @@ module.exports = Fluxxor.createStore({
     getAll : function()
     {
         return this.grids;
+    },
+
+    getTasksForSelectedGrid : function()
+    {
+        return this.grids[this.selectedGrid].tasks;
+    },
+
+    getSelectedGrid : function()
+    {
+        return this.selectedGrid;
     }
 });

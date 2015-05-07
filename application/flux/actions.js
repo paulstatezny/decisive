@@ -13,5 +13,10 @@ module.exports = {
             quadrant : quadrant,
             task     : task
         });
+    },
+
+    selectGrid : function(index)
+    {
+        this.dispatch('SELECT_GRID', index);
     }
 };

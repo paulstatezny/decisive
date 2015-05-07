@@ -1,21 +1,29 @@
 /* global prompt */
 'use strict';
 
-var _         = require('underscore');
-var React     = require('react');
-var PT        = React.PropTypes;
-var Logo      = require('./logo');
-var FluxMixin = require('fluxxor').FluxMixin(React);
+var _               = require('underscore');
+var React           = require('react');
+var PT              = React.PropTypes;
+var Logo            = require('./logo');
+var FluxMixin       = require('fluxxor').FluxMixin(React);
+var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 
 module.exports = React.createClass({
     displayName : 'Sidebar',
 
-    mixins : [FluxMixin],
+    mixins : [FluxMixin, new StoreWatchMixin('grid')],
 
     propTypes : {
         grids : PT.arrayOf(
             PT.shape({name : PT.string})
         ).isRequired
+    },
+
+    getStateFromFlux : function()
+    {
+        return {
+            selectedGrid : this.getFlux().store('grid').getSelectedGrid()
+        };
     },
 
     addGrid : function()
@@ -25,17 +33,22 @@ module.exports = React.createClass({
         this.getFlux().actions.addGrid(gridName);
     },
 
-    selectGrid : function(grid)
+    selectGrid : function(gridIndex)
     {
-        // Wire routing before this
+        this.getFlux().actions.selectGrid(gridIndex);
     },
 
     renderGrids : function()
     {
-        return this.props.grids.map(function (grid) {
+        var selectedGrid = this.state.selectedGrid,
+            selectGrid   = this.selectGrid;
+
+        return this.props.grids.map(function (grid, index) {
+            var selected = (index === selectedGrid) ? '*' : '';
+
             return (
-                <li onClick={_(this.selectGrid).partial(grid)}>
-                    <a>{grid.name}</a>
+                <li onClick={_(selectGrid).partial(index)}>
+                    <a>{grid.name}{selected}</a>
                 </li>
             );
         });
