@@ -53,7 +53,7 @@ module.exports = Fluxxor.createStore({
 
     onAddTask : function(task)
     {
-        var grid = _.findWhere(this.grids, {name : task.grid});
+        var grid = this.grids[task.grid];
 
         grid.tasks[task.quadrant].push({
             task      : task.task,

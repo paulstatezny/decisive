@@ -12,16 +12,14 @@ require('./css/app');
 module.exports = React.createClass({
     displayName : 'DecisiveApplication',
 
-    mixins : [
-        FluxMixin,
-        new StoreWatchMixin('grid')
-    ],
+    mixins : [FluxMixin, new StoreWatchMixin('grid')],
 
     getStateFromFlux : function()
     {
         return {
-            grids             : this.getFlux().store('grid').getAll(),
-            selectedGridTasks : this.getFlux().store('grid').getTasksForSelectedGrid()
+            grids        : this.getFlux().store('grid').getAll(),
+            selectedGrid : this.getFlux().store('grid').getSelectedGrid(),
+            tasks        : this.getFlux().store('grid').getTasksForSelectedGrid()
         };
     },
 
@@ -47,7 +45,7 @@ module.exports = React.createClass({
                                 <span className='left-gutter__header__text left-gutter__header__text--bottom priority-label'>Not Important</span>
                             </div>
                         </div>
-                        <Grid tasks={this.state.selectedGridTasks} />
+                        <Grid tasks={this.state.tasks} id={this.state.selectedGrid} />
                     </div>
                 </main>
             </div>

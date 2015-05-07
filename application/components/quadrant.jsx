@@ -9,7 +9,15 @@ module.exports = React.createClass({
     propTypes : {
         className : React.PropTypes.string.isRequired,
         hint      : React.PropTypes.string.isRequired,
-        tasks     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
+        tasks     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+        addTask   : React.PropTypes.func.isRequired
+    },
+
+    getInitialState : function()
+    {
+        return {
+            newTaskText : ''
+        };
     },
 
     renderItems : function()
@@ -18,6 +26,28 @@ module.exports = React.createClass({
             return (
                 <ListItem task={item.task} completed={item.completed} />
             );
+        });
+    },
+
+    updateNewTaskText : function(event)
+    {
+        this.setState({
+            newTaskText : event.target.value
+        });
+    },
+
+    addTask : function(event)
+    {
+        event.preventDefault();
+
+        if (! this.state.newTaskText) {
+            return;
+        }
+
+        this.props.addTask(this.state.newTaskText);
+
+        this.setState({
+            newTaskText : ''
         });
     },
 
@@ -30,7 +60,14 @@ module.exports = React.createClass({
                     {this.renderItems()}
                     <li className='add-new'>
                         <input type='checkbox' checked={false} />
-                        <input id='new' type='text' placeholder='Click to add item...' />
+                        <form onSubmit={this.addTask}>
+                            <input
+                                id          = 'new'
+                                type        = 'text'
+                                placeholder = 'Click to add item...'
+                                onChange    = {this.updateNewTaskText}
+                            />
+                        </form>
                     </li>
                 </ul>
             </div>
