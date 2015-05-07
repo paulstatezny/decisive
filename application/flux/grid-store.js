@@ -17,6 +17,7 @@ module.exports = Fluxxor.createStore({
         this.bindActions(
             'ADD_GRID', 'onAddGrid',
             'ADD_TASK', 'onAddTask',
+            'REMOVE_TASK', 'onRemoveTask',
             'SELECT_GRID', 'onSelectGrid'
         );
     },
@@ -61,6 +62,13 @@ module.exports = Fluxxor.createStore({
         });
 
         saveToLocalStorage(this.grids);
+
+        this.emit('change');
+    },
+
+    onRemoveTask : function(task)
+    {
+        this.grids[task.grid].tasks[task.quadrant].splice(task.id, 1);
 
         this.emit('change');
     },

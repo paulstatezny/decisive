@@ -47,7 +47,7 @@ module.exports = React.createClass({
             var selected = (index === selectedGrid) ? '*' : '';
 
             return (
-                <li onClick={_(selectGrid).partial(index)}>
+                <li onClick={_(selectGrid).partial(index)} key={'grid-' + index}>
                     <a>{grid.name}{selected}</a>
                 </li>
             );

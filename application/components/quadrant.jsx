@@ -1,5 +1,6 @@
 'use strict';
 
+var _        = require('underscore');
 var React    = require('react');
 var ListItem = require('./list-item');
 
@@ -7,10 +8,11 @@ module.exports = React.createClass({
     displayName : 'Quadrant',
 
     propTypes : {
-        className : React.PropTypes.string.isRequired,
-        hint      : React.PropTypes.string.isRequired,
-        tasks     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-        addTask   : React.PropTypes.func.isRequired
+        className  : React.PropTypes.string.isRequired,
+        hint       : React.PropTypes.string.isRequired,
+        tasks      : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+        addTask    : React.PropTypes.func.isRequired,
+        removeTask : React.PropTypes.func.isRequired
     },
 
     getInitialState : function()
@@ -22,9 +24,16 @@ module.exports = React.createClass({
 
     renderItems : function()
     {
-        return this.props.tasks.map(function (item) {
+        var removeTask = this.props.removeTask;
+
+        return this.props.tasks.map(function (item, index) {
             return (
-                <ListItem task={item.task} completed={item.completed} />
+                <ListItem
+                    task       = {item.task}
+                    completed  = {item.completed}
+                    removeItem = {_.partial(removeTask, index)}
+                    key        = {'task-' + index}
+                />
             );
         });
     },
@@ -65,6 +74,7 @@ module.exports = React.createClass({
                                 id          = 'new'
                                 type        = 'text'
                                 placeholder = 'Click to add item...'
+                                value       = {this.state.newTaskText}
                                 onChange    = {this.updateNewTaskText}
                             />
                         </form>

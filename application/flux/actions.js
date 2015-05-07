@@ -15,6 +15,15 @@ module.exports = {
         });
     },
 
+    removeTask : function(grid, quadrant, taskId)
+    {
+        this.dispatch('REMOVE_TASK', {
+            grid     : grid,
+            quadrant : quadrant,
+            id       : taskId
+        });
+    },
+
     selectGrid : function(index)
     {
         this.dispatch('SELECT_GRID', index);
