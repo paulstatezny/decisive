@@ -11,7 +11,12 @@ var saveToLocalStorage = function(grids) {
 module.exports = Fluxxor.createStore({
     initialize : function()
     {
-        this.grids        = [this.getInitialGrid()];
+        this.grids = store.get('grids');
+
+        if (! this.grids) {
+            this.grids = [this.getInitialGrid()];
+        }
+
         this.selectedGrid = 0;
 
         this.bindActions(
