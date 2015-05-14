@@ -68,7 +68,6 @@ module.exports = React.createClass({
                 <ul className='checklist'>
                     {this.renderItems()}
                     <li className='add-new'>
-                        <input type='checkbox' checked={false} />
                         <form onSubmit={this.addTask}>
                             <input
                                 id          = 'new'
