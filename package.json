@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "rm -rf ./build && webpack",
-    "start": "rm -rf ./build && webpack && node dev-server"
+    "start": "rm -rf ./build && webpack && node dev-server",
+    "publish": "./publish.sh"
   },
   "homepage": "https://github.com/paulstatezny/decisive",
   "dependencies": {
