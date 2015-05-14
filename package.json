@@ -7,6 +7,7 @@
     "url": "https://github.com/paulstatezny/decisive/issues"
   },
   "scripts": {
+    "build": "rm -rf ./build && webpack",
     "start": "rm -rf ./build && webpack && node dev-server"
   },
   "homepage": "https://github.com/paulstatezny/decisive",
