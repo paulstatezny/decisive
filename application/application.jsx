@@ -7,6 +7,7 @@ var Grid    = require('./components/grid');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 
+require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
 module.exports = React.createClass({
