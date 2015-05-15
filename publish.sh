@@ -23,7 +23,7 @@ rm build.zip
 
 # Move built files to root directory
 ls | grep -v build | grep -v node_modules | grep -v .gitignore | xargs rm -rf;
-mv build/*.* ./
+mv build/* ./
 rm -rf build/
 
 # Push files to GitHub
