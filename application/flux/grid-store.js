@@ -52,7 +52,7 @@ module.exports = Fluxxor.createStore({
             }
         });
 
-        saveToLocalStorage(this.grids);
+        saveToLocalStorage();
 
         this.emit('change');
     },
@@ -66,7 +66,7 @@ module.exports = Fluxxor.createStore({
             completed : false
         });
 
-        saveToLocalStorage(this.grids);
+        saveToLocalStorage();
 
         this.emit('change');
     },
@@ -74,6 +74,8 @@ module.exports = Fluxxor.createStore({
     onRemoveTask : function(task)
     {
         this.grids[task.grid].tasks[task.quadrant].splice(task.id, 1);
+
+        saveToLocalStorage();
 
         this.emit('change');
     },
