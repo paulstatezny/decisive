@@ -24,15 +24,19 @@ module.exports = React.createClass({
 
     renderItems : function()
     {
-        var removeTask = this.props.removeTask;
+        var removeTask, toggleCompleted;
+
+        removeTask      = this.props.removeTask;
+        toggleCompleted = this.props.toggleCompleted;
 
         return this.props.tasks.map(function (item, index) {
             return (
                 <ListItem
-                    task       = {item.task}
-                    completed  = {item.completed}
-                    removeItem = {_.partial(removeTask, index)}
-                    key        = {'task-' + index}
+                    task            = {item.task}
+                    completed       = {item.completed}
+                    toggleCompleted = {_.partial(toggleCompleted, index)}
+                    removeItem      = {_.partial(removeTask, index)}
+                    key             = {'task-' + index}
                 />
             );
         });

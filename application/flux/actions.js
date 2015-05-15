@@ -15,6 +15,15 @@ module.exports = {
         });
     },
 
+    toggleCompleted : function(grid, quadrant, taskId)
+    {
+        this.dispatch('TOGGLE_COMPLETED', {
+            grid     : grid,
+            quadrant : quadrant,
+            id       : taskId
+        });
+    },
+
     removeTask : function(grid, quadrant, taskId)
     {
         this.dispatch('REMOVE_TASK', {

@@ -22,6 +22,7 @@ module.exports = Fluxxor.createStore({
         this.bindActions(
             'ADD_GRID', 'onAddGrid',
             'ADD_TASK', 'onAddTask',
+            'TOGGLE_COMPLETED', 'onToggleCompleted',
             'REMOVE_TASK', 'onRemoveTask',
             'SELECT_GRID', 'onSelectGrid'
         );
@@ -65,6 +66,17 @@ module.exports = Fluxxor.createStore({
             task      : task.task,
             completed : false
         });
+
+        this.saveToLocalStorage();
+
+        this.emit('change');
+    },
+
+    onToggleCompleted : function(task)
+    {
+        var taskToToggle = this.grids[task.grid].tasks[task.quadrant][task.id];
+
+        taskToToggle.completed = ! taskToToggle.completed;
 
         this.saveToLocalStorage();
 
