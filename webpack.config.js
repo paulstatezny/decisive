@@ -14,7 +14,7 @@ var config      = {
             __ENVIRONMENT__ : '\'' + environment + '\''
         })
     ],
-    reactLoaders : ['jsx']
+    reactLoaders : ['babel']
 };
 
 if (environment === 'development') {
