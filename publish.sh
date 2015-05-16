@@ -26,6 +26,14 @@ ls | grep -v build | grep -v node_modules | grep -v .gitignore | xargs rm -rf;
 mv build/* ./
 rm -rf build/
 
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "gh-pages" ]
+    then
+        echo "Not on gh-pages branch. Exiting...";
+        git reset HEAD --hard;
+        git clean -f;
+        exit 1;
+fi
+
 # Push files to GitHub
 git add -A
 git commit --amend --no-edit
