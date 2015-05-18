@@ -2,28 +2,29 @@
 
 var React = require('react');
 
-module.exports = React.createClass({
-    displayName : 'ListItem',
-
-    propTypes : {
-        task            : React.PropTypes.string.isRequired,
-        completed       : React.PropTypes.bool.isRequired,
-        removeItem      : React.PropTypes.func.isRequired,
-        toggleCompleted : React.PropTypes.func.isRequired
-    },
-
-    render : function()
+class ListItem extends React.Component
+{
+    render()
     {
-        var classes = this.props.completed ? 'checklist__item--checked' : '';
+        let classes = this.props.completed ? 'checklist__item--checked' : '';
 
         return (
             <li className={classes}>
                 <label>
-                    <input type='checkbox' checked={this.props.completed} onClick={this.props.toggleCompleted} />
+                    <input type='checkbox' checked={this.props.completed} onChange={this.props.toggleCompleted} />
                     {this.props.task}
                 </label>
                 <span className='checklist__item__close-button' onClick={this.props.removeItem}>X</span>
             </li>
         );
     }
-});
+}
+
+ListItem.propTypes = {
+    task            : React.PropTypes.string.isRequired,
+    completed       : React.PropTypes.bool.isRequired,
+    removeItem      : React.PropTypes.func.isRequired,
+    toggleCompleted : React.PropTypes.func.isRequired
+};
+
+module.exports = ListItem;

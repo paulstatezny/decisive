@@ -4,25 +4,19 @@ var _        = require('underscore');
 var React    = require('react');
 var ListItem = require('./list-item');
 
-module.exports = React.createClass({
-    displayName : 'Quadrant',
-
-    propTypes : {
-        className  : React.PropTypes.string.isRequired,
-        hint       : React.PropTypes.string.isRequired,
-        tasks      : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-        addTask    : React.PropTypes.func.isRequired,
-        removeTask : React.PropTypes.func.isRequired
-    },
-
-    getInitialState : function()
+class Quadrant extends React.Component
+{
+    constructor()
     {
-        return {
-            newTaskText : ''
-        };
-    },
+        super();
 
-    renderItems : function()
+        this.updateNewTaskText = this.updateNewTaskText.bind(this);
+        this.addTask           = this.addTask.bind(this);
+
+        this.state = {newTaskText : ''};
+    }
+
+    renderItems()
     {
         var removeTask, toggleCompleted;
 
@@ -40,16 +34,16 @@ module.exports = React.createClass({
                 />
             );
         });
-    },
+    }
 
-    updateNewTaskText : function(event)
+    updateNewTaskText(event)
     {
         this.setState({
             newTaskText : event.target.value
         });
-    },
+    }
 
-    addTask : function(event)
+    addTask(event)
     {
         event.preventDefault();
 
@@ -62,9 +56,9 @@ module.exports = React.createClass({
         this.setState({
             newTaskText : ''
         });
-    },
+    }
 
-    render : function()
+    render()
     {
         return (
             <div className={'grid__quadrant ' + this.props.className}>
@@ -86,4 +80,14 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
+
+Quadrant.propTypes = {
+    className  : React.PropTypes.string.isRequired,
+    hint       : React.PropTypes.string.isRequired,
+    tasks      : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+    addTask    : React.PropTypes.func.isRequired,
+    removeTask : React.PropTypes.func.isRequired
+};
+
+module.exports = Quadrant;
