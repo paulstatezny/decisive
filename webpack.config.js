@@ -6,7 +6,7 @@ var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 
 var config      = {
-    entry    : ['./application/bootstrap.js'],
+    entry    : ['./application/bootstrap.jsx'],
     plugins  : [
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
@@ -60,7 +60,7 @@ module.exports = {
                 query  : {name : '[path][name].[ext]'}
             },
             {
-                test    : /\.jsx$/,
+                test    : /\.(js|jsx)$/,
                 loaders : config.reactLoaders,
                 exclude : npmPath
             },

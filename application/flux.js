@@ -1,13 +1,11 @@
 'use strict';
 
-var Fluxxor = require('fluxxor');
+let React, Fluxxor, GridStore, stores, actions;
 
-var GridStore = require('./flux/grid-store');
-
-var stores = {
-    grid : new GridStore()
-};
-
-var actions = require('./flux/actions');
+React     = require('react');
+Fluxxor   = require('fluxxor');
+GridStore = require('./flux/grid-store');
+stores    = {grid : new GridStore()};
+actions   = require('./flux/actions');
 
 module.exports = new Fluxxor.Flux(stores, actions);

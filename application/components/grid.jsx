@@ -1,21 +1,13 @@
 'use strict';
 
-var _         = require('lodash');
-var React     = require('react');
-var PT        = React.PropTypes;
-var Quadrant  = require('./quadrant');
-var FluxMixin = require('fluxxor').FluxMixin(React);
+var _             = require('lodash');
+var React         = require('react');
+var PT            = React.PropTypes;
+var FluxComponent = require('../flux/flux-component');
+var Quadrant      = require('./quadrant');
 
-class Grid extends React.Component
+class Grid extends FluxComponent
 {
-    constructor(props)
-    {
-        super(props);
-
-        _.assign(this, FluxMixin);
-        _.bindAll(this);
-    }
-
     addTask(quadrant, task)
     {
         this.getFlux().actions.addTask(this.props.id, quadrant, task);
@@ -80,10 +72,6 @@ Grid.propTypes = {
         delay    : PT.arrayOf(PT.object).isRequired
     }).isRequired,
     id : PT.number
-};
-
-Grid.contextTypes = {
-    flux : React.PropTypes.object
 };
 
 module.exports = Grid;

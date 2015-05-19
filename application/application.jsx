@@ -1,30 +1,43 @@
 'use strict';
 
-var React   = require('react');
-var Sidebar = require('./components/sidebar');
-var Grid    = require('./components/grid');
+var _             = require('lodash');
+var React         = require('react');
+var Sidebar       = require('./components/sidebar');
+var Grid          = require('./components/grid');
+var FluxComponent = require('./flux/flux-component');
 
-var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 
 require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
-module.exports = React.createClass({
-    displayName : 'DecisiveApplication',
+class DecisiveApplication extends FluxComponent
+{
+    constructor(props)
+    {
+        super(props);
 
-    mixins : [FluxMixin, new StoreWatchMixin('grid')],
+        _.assign(this, new StoreWatchMixin('grid'));
+        _.bindAll(this);
 
-    getStateFromFlux : function()
+        this.state = {};
+    }
+
+    componentDidMount()
+    {
+        this.state = this.getStateFromFlux();
+    }
+
+    getStateFromFlux()
     {
         return {
             grids        : this.getFlux().store('grid').getAll(),
             selectedGrid : this.getFlux().store('grid').getSelectedGrid(),
             tasks        : this.getFlux().store('grid').getTasksForSelectedGrid()
         };
-    },
+    }
 
-    render : function()
+    render()
     {
         return (
             <div className='container'>
@@ -52,4 +65,10 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
+
+DecisiveApplication.contextTypes = {
+    foo : React.PropTypes.string
+};
+
+module.exports = DecisiveApplication;
