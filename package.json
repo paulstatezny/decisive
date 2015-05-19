@@ -20,6 +20,7 @@
     "jshint": "^2.7.0",
     "jshint-loader": "^0.8.3",
     "jsxhint-loader": "^0.2.0",
+    "lodash": "^3.8.0",
     "react": "^0.13.2",
     "react-hot-loader": "^1.2.5",
     "react-router": "^0.13.3",
