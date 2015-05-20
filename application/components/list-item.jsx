@@ -38,14 +38,12 @@ var ListItem = React.createClass({
     render : function()
     {
         var classes = this.props.completed ? 'checklist__item--checked' : '';
-        var connectDragSource = this.props.connectDragSource;
-        var isDragging = this.props.isDragging;
 
         if (this.props.isDragging) {
             classes += ' checklist__item--dragging';
         }
 
-        return connectDragSource(
+        return this.props.connectDragSource(
             <li className={classes}>
                 <label>
                     <input type='checkbox' checked={this.props.completed} onClick={this.props.toggleCompleted} />

@@ -42,17 +42,17 @@ var Quadrant = React.createClass({
 
     renderItems : function()
     {
-        var removeTask, toggleCompleted, quadrantName;
+        var removeTask, toggleCompleted, name;
 
         removeTask      = this.props.removeTask;
         toggleCompleted = this.props.toggleCompleted;
-        quadrantName    = this.props.name;
+        name            = this.props.name;
 
         return this.props.tasks.map(function (item, index) {
             return (
                 <ListItem
                     index           = {index}
-                    quadrant        = {quadrantName}
+                    quadrant        = {name}
                     task            = {item.task}
                     completed       = {item.completed}
                     toggleCompleted = {_.partial(toggleCompleted, index)}
