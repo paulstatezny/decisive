@@ -60,7 +60,7 @@ var Grid = React.createClass({
     moveTask : function(dropQuadrant, dragQuadrant, task, taskId)
     {
         this.getFlux().actions.addTask(this.props.id, dropQuadrant, task);
-        this.getFlux().actions.removeTask(this.props.id, dragQuadrant, task.id);
+        this.getFlux().actions.removeTask(this.props.id, dragQuadrant, taskId);
     },
 
     toggleCompleted : function(quadrant, taskId)
