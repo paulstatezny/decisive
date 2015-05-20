@@ -189,6 +189,10 @@ html, body, .container {
     background-color: #EEE;
 }
 
+.grid__quadrant--hover {
+    background-color: #EE0;
+}
+
 .quadtrant__hint {
     font-size: 1.1em;
 }
@@ -210,6 +214,10 @@ html, body, .container {
 .checklist__item--checked {
     color           : gray;
     text-decoration : line-through;
+}
+
+.checklist__item--dragging {
+    opacity: 0.3;
 }
 
 .add-new {
