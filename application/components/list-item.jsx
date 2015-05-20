@@ -41,6 +41,10 @@ var ListItem = React.createClass({
         var connectDragSource = this.props.connectDragSource;
         var isDragging = this.props.isDragging;
 
+        if (this.props.isDragging) {
+            classes += ' checklist__item--dragging';
+        }
+
         return connectDragSource(
             <li className={classes}>
                 <label>

@@ -216,6 +216,10 @@ html, body, .container {
     text-decoration : line-through;
 }
 
+.checklist__item--dragging {
+    opacity: 0.3;
+}
+
 .add-new {
     opacity: 0.6;
     padding-left: 1em;
