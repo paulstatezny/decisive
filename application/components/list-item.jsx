@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react');
-var ItemTypes = require('./constants').ItemTypes;
+var React      = require('react');
+var ItemTypes  = require('../constants').ItemTypes;
 var DragSource = require('react-dnd').DragSource;
 
 var listItemSource = {

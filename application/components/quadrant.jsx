@@ -3,7 +3,7 @@
 var _        = require('underscore');
 var React    = require('react');
 var ListItem = require('./list-item');
-var ItemTypes = require('./constants').ItemTypes;
+var ItemTypes = require('../constants').ItemTypes;
 var DropTarget = require('react-dnd').DropTarget;
 
 var quadrantTarget = {
