@@ -7,38 +7,42 @@ var PT              = React.PropTypes;
 var Logo            = require('./logo');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var FluxComponent   = require('../flux/flux-component');
 
-module.exports = React.createClass({
-    displayName : 'Sidebar',
+class Sidebar extends FluxComponent
+{
+    constructor(props, context)
+    {
+        super(props, context);
 
-    mixins : [FluxMixin, new StoreWatchMixin('grid')],
+        this.addGrid     = this.addGrid.bind(this);
+        this.selectGrid  = this.selectGrid.bind(this);
+        this.renderGrids = this.renderGrids.bind(this);
 
-    propTypes : {
-        grids : PT.arrayOf(
-            PT.shape({name : PT.string})
-        ).isRequired
-    },
+        this.watchedStores = ['grid'];
+        this.state = this.getStateFromFlux();
+    }
 
-    getStateFromFlux : function()
+    getStateFromFlux()
     {
         return {
             selectedGrid : this.getFlux().store('grid').getSelectedGrid()
         };
-    },
+    }
 
-    addGrid : function()
+    addGrid()
     {
         var gridName = prompt('Enter the name of the grid');
 
         this.getFlux().actions.addGrid(gridName);
-    },
+    }
 
-    selectGrid : function(gridIndex)
+    selectGrid(gridIndex)
     {
         this.getFlux().actions.selectGrid(gridIndex);
-    },
+    }
 
-    renderGrids : function()
+    renderGrids()
     {
         var selectedGrid = this.state.selectedGrid,
             selectGrid   = this.selectGrid;
@@ -52,9 +56,9 @@ module.exports = React.createClass({
                 </li>
             );
         });
-    },
+    }
 
-    render : function()
+    render()
     {
         return (
             <nav className='sidebar'>
@@ -69,4 +73,12 @@ module.exports = React.createClass({
             </nav>
         );
     }
-});
+}
+
+Sidebar.propTypes = {
+    grids : PT.arrayOf(
+        PT.shape({name : PT.string})
+    ).isRequired
+};
+
+module.exports = Sidebar;
