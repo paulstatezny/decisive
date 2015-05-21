@@ -34,7 +34,9 @@ class Sidebar extends FluxComponent
     {
         var gridName = prompt('Enter the name of the grid');
 
-        this.getFlux().actions.addGrid(gridName);
+        if (!! gridName) {
+            this.getFlux().actions.addGrid(gridName);
+        }
     }
 
     selectGrid(gridIndex)
