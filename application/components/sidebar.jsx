@@ -49,7 +49,7 @@ class Sidebar extends FluxComponent
         var selectedGrid = this.state.selectedGrid,
             selectGrid   = this.selectGrid;
 
-        return this.props.grids.map(function (grid, index) {
+        return this.props.grids.map((grid, index) => {
             var selected = (index === selectedGrid) ? '*' : '';
 
             return (

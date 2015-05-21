@@ -25,7 +25,7 @@ class FluxComponent extends React.Component
     {
         var flux = this.getFlux();
 
-        _.forEach(this.watchedStores, function(store) {
+        _.forEach(this.watchedStores, (store) => {
             flux.store(store).on('change', this._setStateFromFlux);
         }, this);
     }
@@ -34,7 +34,7 @@ class FluxComponent extends React.Component
     {
         var flux = this.getFlux();
 
-        _.forEach(this.watchedStores, function(store) {
+        _.forEach(this.watchedStores, (store) => {
             flux.store(store).removeListener('change', this._setStateFromFlux);
         }, this);
     }

@@ -23,17 +23,15 @@ class Quadrant extends React.Component
         removeTask      = this.props.removeTask;
         toggleCompleted = this.props.toggleCompleted;
 
-        return this.props.tasks.map(function (item, index) {
-            return (
-                <ListItem
-                    task            = {item.task}
-                    completed       = {item.completed}
-                    toggleCompleted = {_.partial(toggleCompleted, index)}
-                    removeItem      = {_.partial(removeTask, index)}
-                    key             = {'task-' + index}
-                />
-            );
-        });
+        return this.props.tasks.map((item, index) =>
+            <ListItem
+                task            = {item.task}
+                completed       = {item.completed}
+                toggleCompleted = {_.partial(toggleCompleted, index)}
+                removeItem      = {_.partial(removeTask, index)}
+                key             = {'task-' + index}
+            />
+        );
     }
 
     updateNewTaskText(event)

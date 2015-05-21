@@ -4,7 +4,7 @@ var Fluxxor = require('fluxxor');
 var store   = require('store');
 var _       = require('underscore');
 
-var saveToLocalStorage = function(grids) {
+var saveToLocalStorage = (grids) => {
     store.set('grids', grids);
 };
 
