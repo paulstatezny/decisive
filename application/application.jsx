@@ -6,8 +6,6 @@ var Sidebar       = require('./components/sidebar');
 var Grid          = require('./components/grid');
 var FluxComponent = require('./flux/flux-component');
 
-var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
-
 require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
@@ -17,14 +15,7 @@ class DecisiveApplication extends FluxComponent
     {
         super(props);
 
-        _.assign(this, new StoreWatchMixin('grid'));
-        _.bindAll(this);
-
-        this.state = {};
-    }
-
-    componentDidMount()
-    {
+        this.watchedStores = ['grid'];
         this.state = this.getStateFromFlux();
     }
 
@@ -59,7 +50,7 @@ class DecisiveApplication extends FluxComponent
                                 <span className='left-gutter__header__text left-gutter__header__text--bottom priority-label'>Not Important</span>
                             </div>
                         </div>
-                        <Grid tasks={this.state.tasks} id={this.state.selectedGrid} />
+                        <Grid tasks={this.state.tasks} id={this.state.selectedGrid} flux={this.props.flux} />
                     </div>
                 </main>
             </div>
@@ -68,7 +59,7 @@ class DecisiveApplication extends FluxComponent
 }
 
 DecisiveApplication.contextTypes = {
-    foo : React.PropTypes.string
+    flux : React.PropTypes.object
 };
 
 module.exports = DecisiveApplication;

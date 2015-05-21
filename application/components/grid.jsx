@@ -8,9 +8,18 @@ var Quadrant      = require('./quadrant');
 
 class Grid extends FluxComponent
 {
+    constructor(props, context)
+    {
+        super(props, context);
+
+        this.addTask         = this.addTask.bind(this);
+        this.removeTask      = this.removeTask.bind(this);
+        this.toggleCompleted = this.toggleCompleted.bind(this);
+    }
+
     addTask(quadrant, task)
     {
-        this.getFlux().actions.addTask(this.props.id, quadrant, task);
+        super.getFlux().actions.addTask(this.props.id, quadrant, task);
     }
 
     removeTask(quadrant, taskId)
@@ -72,6 +81,14 @@ Grid.propTypes = {
         delay    : PT.arrayOf(PT.object).isRequired
     }).isRequired,
     id : PT.number
+};
+
+Grid.contextTypes = {
+    flux : React.PropTypes.object
+};
+
+Grid.childContextTypes = {
+    flux : React.PropTypes.object
 };
 
 module.exports = Grid;

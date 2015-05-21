@@ -5,25 +5,26 @@ var React       = require('react');
 var Application = require('./application');
 var flux        = require('./flux');
 
-class FluxApplication extends React.Component {
+class FluxApplication extends React.Component
+{
     getChildContext()
     {
         return {
-            foo : 'bar'
+            flux : flux
         };
     }
 
     render()
     {
-        return <Application />;
+        return <Application flux={flux} />;
     }
 }
 
 FluxApplication.childContextTypes = {
-    foo : React.PropTypes.object
+    flux : React.PropTypes.object
 };
 
 React.render(
-    React.createElement(FluxApplication),
+    <FluxApplication />,
     window.document.body
 );
