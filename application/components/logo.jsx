@@ -2,10 +2,9 @@
 
 var React = require('react');
 
-module.exports = React.createClass({
-    displayName : 'Logo',
-
-    render : function()
+class Logo extends React.Component
+{
+    render()
     {
         return (
             <h1 className='logo'>
@@ -17,4 +16,6 @@ module.exports = React.createClass({
             </h1>
         );
     }
-});
+}
+
+module.exports = Logo;
