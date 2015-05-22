@@ -80,6 +80,7 @@ module.exports = {
     },
     devtool : config.devtools,
     jshint  : {
+        esnext       : true,
         globalstrict : true,
         globals      : {
             __BACKEND__     : true,

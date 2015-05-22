@@ -6,10 +6,12 @@ var Sidebar       = require('./components/sidebar');
 var Grid          = require('./components/grid');
 var FluxComponent = require('./flux/flux-component');
 
+import Flux from './flux/flux-component';
+
 require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
-class DecisiveApplication extends FluxComponent
+class DecisiveApplication extends React.Component
 {
     constructor(props)
     {
@@ -62,4 +64,4 @@ DecisiveApplication.contextTypes = {
     flux : React.PropTypes.object
 };
 
-module.exports = DecisiveApplication;
+export default DecisiveApplication;
