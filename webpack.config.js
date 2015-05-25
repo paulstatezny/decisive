@@ -32,6 +32,8 @@ if (environment !== 'production') {
     config.devtools = '#inline-source-map';
 }
 
+console.log('Environment: ' + environment);
+
 module.exports = {
     name   : 'browser bundle',
     entry  : config.entry,

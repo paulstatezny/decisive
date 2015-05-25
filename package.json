@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "rm -rf ./build && webpack",
-    "build_production" : "APP_ENV=production rm -rf ./build && webpack -p",
+    "build_production" : "./build_production.sh",
     "start": "rm -rf ./build && webpack && node dev-server",
     "publish": "./publish.sh"
   },
