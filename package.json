@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "rm -rf ./build && webpack",
+    "build_production" : "rm -rf ./build && webpack -p",
     "start": "rm -rf ./build && webpack && node dev-server",
     "publish": "./publish.sh"
   },

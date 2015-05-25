@@ -8,7 +8,7 @@ fi
 
 # Build the JavaScript app
 printf "\nBUILDING APP\n";
-npm run build;
+npm run build_production;
 
 # Zip the built files
 printf "\nBUNDLING FILES\n\n";
