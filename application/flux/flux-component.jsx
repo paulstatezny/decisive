@@ -13,60 +13,77 @@ var _     = require('lodash');
  * @param  {Array}     watchedStores     Stores to watch
  * @param  {Function}  getStateFromFlux  Function that receives the Flux object and returns state set from Flux
  */
-export default (ComposedComponent, watchedStores, getStateFromFlux) => class extends React.Component
+export default (ComposedComponent, watchedStores, getStateFromFlux) =>
 {
-    constructor(props, context)
+    let FluxClass = class extends React.Component
     {
-        super(props, context);
+        constructor(props, context)
+        {
+            super(props, context);
 
-        this.getFlux              = this.getFlux.bind(this);
-        this.componentDidMount    = this.componentDidMount.bind(this);
-        this.componentWillUnmount = this.componentWillUnmount.bind(this);
-        this.setStateFromFlux     = this.setStateFromFlux.bind(this);
-    }
+            this.getFlux              = this.getFlux.bind(this);
+            this.componentDidMount    = this.componentDidMount.bind(this);
+            this.componentWillUnmount = this.componentWillUnmount.bind(this);
+            this.setStateFromFlux     = this.setStateFromFlux.bind(this);
 
-    getFlux()
-    {
-        return this.props.flux || (this.context && this.context.flux);
-    }
+            if (getStateFromFlux) {
+                this.state = getStateFromFlux(this.getFlux());
+            }
+        }
 
-    componentDidMount()
-    {
-        var flux = this.getFlux();
+        getFlux()
+        {
+            return this.props.flux || (this.context && this.context.flux);
+        }
 
-        _.forEach(watchedStores, (store) => {
-            flux.store(store).on('change', this.setStateFromFlux);
-        });
-    }
+        componentDidMount()
+        {
+            var flux = this.getFlux();
 
-    componentWillUnmount()
-    {
-        var flux = this.getFlux();
+            _.forEach(watchedStores, (store) => {
+                flux.store(store).on('change', this.setStateFromFlux);
+            });
+        }
 
-        _.forEach(watchedStores, (store) => {
-            flux.store(store).removeListener('change', this.setStateFromFlux);
-        });
-    }
+        componentWillUnmount()
+        {
+            var flux = this.getFlux();
 
-    setStateFromFlux()
-    {
-        this.setState(
-            getStateFromFlux(this.getFlux())
-        );
-    }
+            _.forEach(watchedStores, (store) => {
+                flux.store(store).removeListener('change', this.setStateFromFlux);
+            });
+        }
 
-    render()
-    {
-        return (
-            <ComposedComponent {...this.props} flux={this.getFlux()} />
-        );
-    }
-};
+        setStateFromFlux()
+        {
+            if (! getStateFromFlux) {
+                return;
+            }
 
-Flux.contextTypes = {
-    flux : React.PropTypes.object
-};
+            let component = this.refs ? this.refs.component || {} : {};
 
-Flux.childContextTypes = {
-    flux : React.PropTypes.object
+            this.setState(getStateFromFlux(this.getFlux(), component.props, component.state));
+        }
+
+        render()
+        {
+            if (getStateFromFlux && ! this.state) {
+                return null;
+            }
+
+            return (
+                <ComposedComponent {...this.props} {...this.state} flux={this.getFlux()} ref='component' />
+            );
+        }
+    };
+
+    FluxClass.contextTypes = {
+        flux : React.PropTypes.object
+    };
+
+    FluxClass.childContextTypes = {
+        flux : React.PropTypes.object
+    };
+
+    return FluxClass;
 };

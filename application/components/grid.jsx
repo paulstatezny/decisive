@@ -6,7 +6,7 @@ var PT            = React.PropTypes;
 var FluxComponent = require('../flux/flux-component');
 var Quadrant      = require('./quadrant');
 
-class Grid extends FluxComponent
+class Grid extends React.Component
 {
     constructor(props, context)
     {
@@ -19,17 +19,17 @@ class Grid extends FluxComponent
 
     addTask(quadrant, task)
     {
-        super.getFlux().actions.addTask(this.props.id, quadrant, task);
+        this.props.flux.actions.addTask(this.props.id, quadrant, task);
     }
 
     removeTask(quadrant, taskId)
     {
-        this.getFlux().actions.removeTask(this.props.id, quadrant, taskId);
+        this.props.flux.actions.removeTask(this.props.id, quadrant, taskId);
     }
 
     toggleCompleted(quadrant, taskId)
     {
-        this.getFlux().actions.toggleCompleted(this.props.id, quadrant, taskId);
+        this.props.flux.actions.toggleCompleted(this.props.id, quadrant, taskId);
     }
 
     render()
@@ -83,12 +83,4 @@ Grid.propTypes = {
     id : PT.number
 };
 
-Grid.contextTypes = {
-    flux : React.PropTypes.object
-};
-
-Grid.childContextTypes = {
-    flux : React.PropTypes.object
-};
-
-module.exports = Grid;
+export default FluxComponent(Grid, ['grid']);

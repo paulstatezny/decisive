@@ -9,7 +9,7 @@ var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 var FluxComponent   = require('../flux/flux-component');
 
-class Sidebar extends FluxComponent
+class Sidebar extends React.Component
 {
     constructor(props, context)
     {
@@ -18,16 +18,6 @@ class Sidebar extends FluxComponent
         this.addGrid     = this.addGrid.bind(this);
         this.selectGrid  = this.selectGrid.bind(this);
         this.renderGrids = this.renderGrids.bind(this);
-
-        this.watchedStores = ['grid'];
-        this.state = this.getStateFromFlux();
-    }
-
-    getStateFromFlux()
-    {
-        return {
-            selectedGrid : this.getFlux().store('grid').getSelectedGrid()
-        };
     }
 
     addGrid()
@@ -35,18 +25,18 @@ class Sidebar extends FluxComponent
         var gridName = prompt('Enter the name of the grid');
 
         if (!! gridName) {
-            this.getFlux().actions.addGrid(gridName);
+            this.props.flux.actions.addGrid(gridName);
         }
     }
 
     selectGrid(gridIndex)
     {
-        this.getFlux().actions.selectGrid(gridIndex);
+        this.props.flux.actions.selectGrid(gridIndex);
     }
 
     renderGrids()
     {
-        var selectedGrid = this.state.selectedGrid,
+        var selectedGrid = this.props.selectedGrid,
             selectGrid   = this.selectGrid;
 
         return this.props.grids.map((grid, index) => {
@@ -80,7 +70,12 @@ class Sidebar extends FluxComponent
 Sidebar.propTypes = {
     grids : PT.arrayOf(
         PT.shape({name : PT.string})
-    ).isRequired
+    ).isRequired,
+    selectedGrid : PT.number.isRequired
 };
 
-module.exports = Sidebar;
+export default FluxComponent(Sidebar, ['grid'], function (flux) {
+    return {
+        selectedGrid : flux.store('grid').getSelectedGrid()
+    };
+});

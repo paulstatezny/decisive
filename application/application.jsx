@@ -6,35 +6,16 @@ var Sidebar       = require('./components/sidebar');
 var Grid          = require('./components/grid');
 var FluxComponent = require('./flux/flux-component');
 
-import Flux from './flux/flux-component';
-
 require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
 class DecisiveApplication extends React.Component
 {
-    constructor(props)
-    {
-        super(props);
-
-        this.watchedStores = ['grid'];
-        this.state = this.getStateFromFlux();
-    }
-
-    getStateFromFlux()
-    {
-        return {
-            grids        : this.getFlux().store('grid').getAll(),
-            selectedGrid : this.getFlux().store('grid').getSelectedGrid(),
-            tasks        : this.getFlux().store('grid').getTasksForSelectedGrid()
-        };
-    }
-
     render()
     {
         return (
             <div className='container'>
-                <Sidebar grids={this.state.grids} />
+                <Sidebar grids={this.props.grids} />
                 <main className='content'>
                     <div className='content__top-gutter'>
                         <div className='top-gutter__corner'></div>
@@ -52,7 +33,7 @@ class DecisiveApplication extends React.Component
                                 <span className='left-gutter__header__text left-gutter__header__text--bottom priority-label'>Not Important</span>
                             </div>
                         </div>
-                        <Grid tasks={this.state.tasks} id={this.state.selectedGrid} flux={this.props.flux} />
+                        <Grid tasks={this.props.tasks} id={this.props.selectedGrid} />
                     </div>
                 </main>
             </div>
@@ -60,8 +41,10 @@ class DecisiveApplication extends React.Component
     }
 }
 
-DecisiveApplication.contextTypes = {
-    flux : React.PropTypes.object
-};
-
-export default DecisiveApplication;
+export default FluxComponent(DecisiveApplication, ['grid'], function (flux) {
+    return {
+        grids        : flux.store('grid').getAll(),
+        selectedGrid : flux.store('grid').getSelectedGrid(),
+        tasks        : flux.store('grid').getTasksForSelectedGrid()
+    };
+});
