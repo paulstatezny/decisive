@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "$(git rev-parse --abbrev-ref HEAD)" != "develop" ]
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "master" ]
     then
-        echo "Not on develop. Exiting..."
+        echo "Not on master. Exiting..."
         exit 1
 fi
 
@@ -42,8 +42,8 @@ printf "\nSENDING TO GITHUB\n\n";
 
 git push --force origin
 
-printf "\nHEADED BACK TO DEVELOP\n\n";
+printf "\nHEADED BACK TO MASTER\n\n";
 
-git checkout develop
+git checkout master
 
 printf "\nDONE\n\n";
