@@ -7,43 +7,39 @@ var PT              = React.PropTypes;
 var Logo            = require('./logo');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var FluxComponent   = require('../flux/flux-component');
 
-module.exports = React.createClass({
-    displayName : 'Sidebar',
-
-    mixins : [FluxMixin, new StoreWatchMixin('grid')],
-
-    propTypes : {
-        grids : PT.arrayOf(
-            PT.shape({name : PT.string})
-        ).isRequired
-    },
-
-    getStateFromFlux : function()
+class Sidebar extends React.Component
+{
+    constructor(props, context)
     {
-        return {
-            selectedGrid : this.getFlux().store('grid').getSelectedGrid()
-        };
-    },
+        super(props, context);
 
-    addGrid : function()
+        this.addGrid     = this.addGrid.bind(this);
+        this.selectGrid  = this.selectGrid.bind(this);
+        this.renderGrids = this.renderGrids.bind(this);
+    }
+
+    addGrid()
     {
         var gridName = prompt('Enter the name of the grid');
 
-        this.getFlux().actions.addGrid(gridName);
-    },
+        if (!! gridName) {
+            this.props.flux.actions.addGrid(gridName);
+        }
+    }
 
-    selectGrid : function(gridIndex)
+    selectGrid(gridIndex)
     {
-        this.getFlux().actions.selectGrid(gridIndex);
-    },
+        this.props.flux.actions.selectGrid(gridIndex);
+    }
 
-    renderGrids : function()
+    renderGrids()
     {
-        var selectedGrid = this.state.selectedGrid,
+        var selectedGrid = this.props.selectedGrid,
             selectGrid   = this.selectGrid;
 
-        return this.props.grids.map(function (grid, index) {
+        return this.props.grids.map((grid, index) => {
             var selected = (index === selectedGrid) ? '*' : '';
 
             return (
@@ -52,9 +48,9 @@ module.exports = React.createClass({
                 </li>
             );
         });
-    },
+    }
 
-    render : function()
+    render()
     {
         return (
             <nav className='sidebar'>
@@ -69,4 +65,15 @@ module.exports = React.createClass({
             </nav>
         );
     }
-});
+}
+
+Sidebar.propTypes = {
+    grids : PT.arrayOf(
+        PT.shape({name : PT.string})
+    ).isRequired,
+    selectedGrid : PT.number.isRequired
+};
+
+export default FluxComponent(Sidebar, ['grid'], flux => ({
+    selectedGrid : flux.store('grid').getSelectedGrid()
+}));

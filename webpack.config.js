@@ -6,7 +6,7 @@ var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 
 var config      = {
-    entry    : ['./application/bootstrap.js'],
+    entry    : ['./application/bootstrap.jsx'],
     plugins  : [
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
@@ -14,7 +14,7 @@ var config      = {
             __ENVIRONMENT__ : '\'' + environment + '\''
         })
     ],
-    reactLoaders : ['jsx']
+    reactLoaders : ['babel']
 };
 
 if (environment === 'development') {
@@ -60,7 +60,7 @@ module.exports = {
                 query  : {name : '[path][name].[ext]'}
             },
             {
-                test    : /\.jsx$/,
+                test    : /\.(js|jsx)$/,
                 loaders : config.reactLoaders,
                 exclude : npmPath
             },
@@ -80,6 +80,7 @@ module.exports = {
     },
     devtool : config.devtools,
     jshint  : {
+        esnext       : true,
         globalstrict : true,
         globals      : {
             __BACKEND__     : true,

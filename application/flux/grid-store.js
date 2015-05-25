@@ -4,11 +4,11 @@ var Fluxxor = require('fluxxor');
 var store   = require('store');
 var _       = require('underscore');
 
-var saveToLocalStorage = function(grids) {
+var saveToLocalStorage = (grids) => {
     store.set('grids', grids);
 };
 
-module.exports = Fluxxor.createStore({
+export default Fluxxor.createStore({
     initialize : function()
     {
         this.grids = store.get('grids');

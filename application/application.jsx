@@ -1,34 +1,21 @@
 'use strict';
 
-var React   = require('react');
-var Sidebar = require('./components/sidebar');
-var Grid    = require('./components/grid');
-
-var FluxMixin       = require('fluxxor').FluxMixin(React);
-var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var _             = require('lodash');
+var React         = require('react');
+var Sidebar       = require('./components/sidebar');
+var Grid          = require('./components/grid');
+var FluxComponent = require('./flux/flux-component');
 
 require('!file-loader?name=[path][name].[ext]!../images/favicon.ico');
 require('./css/app');
 
-module.exports = React.createClass({
-    displayName : 'DecisiveApplication',
-
-    mixins : [FluxMixin, new StoreWatchMixin('grid')],
-
-    getStateFromFlux : function()
-    {
-        return {
-            grids        : this.getFlux().store('grid').getAll(),
-            selectedGrid : this.getFlux().store('grid').getSelectedGrid(),
-            tasks        : this.getFlux().store('grid').getTasksForSelectedGrid()
-        };
-    },
-
-    render : function()
+class DecisiveApplication extends React.Component
+{
+    render()
     {
         return (
             <div className='container'>
-                <Sidebar grids={this.state.grids} />
+                <Sidebar grids={this.props.grids} />
                 <main className='content'>
                     <div className='content__top-gutter'>
                         <div className='top-gutter__corner'></div>
@@ -46,10 +33,16 @@ module.exports = React.createClass({
                                 <span className='left-gutter__header__text left-gutter__header__text--bottom priority-label'>Not Important</span>
                             </div>
                         </div>
-                        <Grid tasks={this.state.tasks} id={this.state.selectedGrid} />
+                        <Grid tasks={this.props.tasks} id={this.props.selectedGrid} />
                     </div>
                 </main>
             </div>
         );
     }
-});
+}
+
+export default FluxComponent(DecisiveApplication, ['grid'], flux => ({
+    grids        : flux.store('grid').getAll(),
+    selectedGrid : flux.store('grid').getSelectedGrid(),
+    tasks        : flux.store('grid').getTasksForSelectedGrid()
+}));

@@ -1,66 +1,38 @@
 'use strict';
 
-var _        = require('underscore');
-var React    = require('react');
-var Quadrant = require('./quadrant');
+var _             = require('lodash');
+var React         = require('react');
+var PT            = React.PropTypes;
+var FluxComponent = require('../flux/flux-component');
+var Quadrant      = require('./quadrant');
 
-var FluxMixin       = require('fluxxor').FluxMixin(React);
-var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+class Grid extends React.Component
+{
+    constructor(props, context)
+    {
+        super(props, context);
 
-var ITEMS = [
-    {
-        task      : 'Create React app version of static HTML',
-        completed : true
-    },
-    {
-        task      : 'Wire up components',
-        completed : false
-    },
-    {
-        task      : 'Implement design feedback',
-        completed : false
-    },
-    {
-        task      : 'Polish design',
-        completed : false
-    },
-    {
-        task      : 'Implement single-column layout',
-        completed : false
+        this.addTask         = this.addTask.bind(this);
+        this.removeTask      = this.removeTask.bind(this);
+        this.toggleCompleted = this.toggleCompleted.bind(this);
     }
-];
 
-module.exports = React.createClass({
-    displayName : 'Grid',
-
-    mixins : [FluxMixin],
-
-    propTypes : {
-        tasks : React.PropTypes.shape({
-            do       : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-            plan     : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-            delegate : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-            delay    : React.PropTypes.arrayOf(React.PropTypes.object).isRequired
-        }).isRequired,
-        id : React.PropTypes.number
-    },
-
-    addTask : function(quadrant, task)
+    addTask(quadrant, task)
     {
-        this.getFlux().actions.addTask(this.props.id, quadrant, task);
-    },
+        this.props.flux.actions.addTask(this.props.id, quadrant, task);
+    }
 
-    removeTask : function(quadrant, taskId)
+    removeTask(quadrant, taskId)
     {
-        this.getFlux().actions.removeTask(this.props.id, quadrant, taskId);
-    },
+        this.props.flux.actions.removeTask(this.props.id, quadrant, taskId);
+    }
 
-    toggleCompleted : function(quadrant, taskId)
+    toggleCompleted(quadrant, taskId)
     {
-        this.getFlux().actions.toggleCompleted(this.props.id, quadrant, taskId);
-    },
+        this.props.flux.actions.toggleCompleted(this.props.id, quadrant, taskId);
+    }
 
-    render : function()
+    render()
     {
         return (
             <div className='grid'>
@@ -99,4 +71,16 @@ module.exports = React.createClass({
             </div>
         );
     }
-});
+}
+
+Grid.propTypes = {
+    tasks : PT.shape({
+        do       : PT.arrayOf(PT.object).isRequired,
+        plan     : PT.arrayOf(PT.object).isRequired,
+        delegate : PT.arrayOf(PT.object).isRequired,
+        delay    : PT.arrayOf(PT.object).isRequired
+    }).isRequired,
+    id : PT.number
+};
+
+export default FluxComponent(Grid, ['grid']);
