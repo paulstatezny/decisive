@@ -8,7 +8,7 @@ var saveToLocalStorage = (grids) => {
     store.set('grids', grids);
 };
 
-module.exports = Fluxxor.createStore({
+export default Fluxxor.createStore({
     initialize : function()
     {
         this.grids = store.get('grids');

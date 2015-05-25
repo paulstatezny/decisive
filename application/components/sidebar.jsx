@@ -74,8 +74,6 @@ Sidebar.propTypes = {
     selectedGrid : PT.number.isRequired
 };
 
-export default FluxComponent(Sidebar, ['grid'], function (flux) {
-    return {
-        selectedGrid : flux.store('grid').getSelectedGrid()
-    };
-});
+export default FluxComponent(Sidebar, ['grid'], flux => ({
+    selectedGrid : flux.store('grid').getSelectedGrid()
+}));

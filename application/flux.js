@@ -8,4 +8,4 @@ GridStore = require('./flux/grid-store');
 stores    = {grid : new GridStore()};
 actions   = require('./flux/actions');
 
-module.exports = new Fluxxor.Flux(stores, actions);
+export default new Fluxxor.Flux(stores, actions);

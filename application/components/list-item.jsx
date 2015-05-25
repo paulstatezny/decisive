@@ -27,4 +27,4 @@ ListItem.propTypes = {
     toggleCompleted : React.PropTypes.func.isRequired
 };
 
-module.exports = ListItem;
+export default ListItem;

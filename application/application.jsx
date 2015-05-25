@@ -41,10 +41,8 @@ class DecisiveApplication extends React.Component
     }
 }
 
-export default FluxComponent(DecisiveApplication, ['grid'], function (flux) {
-    return {
-        grids        : flux.store('grid').getAll(),
-        selectedGrid : flux.store('grid').getSelectedGrid(),
-        tasks        : flux.store('grid').getTasksForSelectedGrid()
-    };
-});
+export default FluxComponent(DecisiveApplication, ['grid'], flux => ({
+    grids        : flux.store('grid').getAll(),
+    selectedGrid : flux.store('grid').getSelectedGrid(),
+    tasks        : flux.store('grid').getTasksForSelectedGrid()
+}));

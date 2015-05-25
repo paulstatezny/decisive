@@ -88,4 +88,4 @@ Quadrant.propTypes = {
     removeTask : React.PropTypes.func.isRequired
 };
 
-module.exports = Quadrant;
+export default Quadrant;
