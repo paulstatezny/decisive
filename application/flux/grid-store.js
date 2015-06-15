@@ -24,7 +24,8 @@ export default Fluxxor.createStore({
             'ADD_TASK', 'onAddTask',
             'TOGGLE_COMPLETED', 'onToggleCompleted',
             'REMOVE_TASK', 'onRemoveTask',
-            'SELECT_GRID', 'onSelectGrid'
+            'SELECT_GRID', 'onSelectGrid',
+            'DELETE_GRID', 'onDeleteGrid'
         );
     },
 
@@ -95,6 +96,15 @@ export default Fluxxor.createStore({
     onSelectGrid : function(index)
     {
         this.selectedGrid = index;
+
+        this.emit('change');
+    },
+
+    onDeleteGrid : function(index)
+    {
+        this.grids.splice(index, 1);
+
+        this.saveToLocalStorage();
 
         this.emit('change');
     },

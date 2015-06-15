@@ -1,4 +1,4 @@
-/* global prompt */
+/* global prompt, window */
 'use strict';
 
 var _               = require('underscore');
@@ -18,6 +18,7 @@ class Sidebar extends React.Component
         this.addGrid     = this.addGrid.bind(this);
         this.selectGrid  = this.selectGrid.bind(this);
         this.renderGrids = this.renderGrids.bind(this);
+        this.deleteGrid  = this.deleteGrid.bind(this);
     }
 
     addGrid()
@@ -34,6 +35,15 @@ class Sidebar extends React.Component
         this.props.flux.actions.selectGrid(gridIndex);
     }
 
+    deleteGrid(gridIndex, e)
+    {
+        e.stopPropagation();
+
+        if (window.confirm('Are you sure you want to delete this grid?')) {
+            this.props.flux.actions.deleteGrid(gridIndex);
+        }
+    }
+
     renderGrids()
     {
         var selectedGrid = this.props.selectedGrid,
@@ -44,7 +54,13 @@ class Sidebar extends React.Component
 
             return (
                 <li onClick={_(selectGrid).partial(index)} key={'grid-' + index}>
-                    <a>{grid.name}{selected}</a>
+                    <a>
+                        <span className='sidebar__delete-button' onClick={_(this.deleteGrid).partial(index)}>
+                            X
+                        </span>
+                        {' ' + grid.name}
+                        {selected}
+                    </a>
                 </li>
             );
         });

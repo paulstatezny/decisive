@@ -54,6 +54,7 @@ html, body, .container {
     width           : 100%;
     padding-top     : 1em;
     padding-bottom  : 1em;
+    cursor          : pointer;
 }
 
 .sidebar li:nth-child(odd) {
@@ -63,6 +64,14 @@ html, body, .container {
 .sidebar a {
     text-decoration : none;
     color           : black;
+}
+
+.sidebar__delete-button {
+    color : gray;
+}
+
+.sidebar__delete-button:hover {
+    color : red;
 }
 
 .content {

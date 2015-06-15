@@ -24,5 +24,10 @@ module.exports = {
     selectGrid(index)
     {
         this.dispatch('SELECT_GRID', index);
+    },
+
+    deleteGrid(index)
+    {
+        this.dispatch('DELETE_GRID', index);
     }
 };
