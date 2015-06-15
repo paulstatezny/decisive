@@ -102,6 +102,10 @@ export default Fluxxor.createStore({
 
     onDeleteGrid : function(index)
     {
+        if (this.selectedGrid === index) {
+            this.selectedGrid = 0;
+        }
+
         this.grids.splice(index, 1);
 
         this.saveToLocalStorage();
